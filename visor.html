@@ -48,7 +48,7 @@
 			var proyeccion2 = new OpenLayers.Projection("EPSG:4326");
 			var controlNavegacion = new OpenLayers.Control.Navigation();
 			var controlZoom = new OpenLayers.Control.PanZoomBar(); // Zoom
-			var host = "http://192.168.43.69";
+			var host = "http://192.168.43.33";
 			OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
 
 			// Propiedades del objeto Map
@@ -94,9 +94,22 @@
 			var layerDepartamentosWMS = new OpenLayers.Layer.WMS(nombreWMS, urlWMS, propiedadesWMS);
 			layerDepartamentosWMS.setVisibility(false);
 			map.addLayer(layerDepartamentosWMS);
+			//esto es mio
+			var layerColegio = new OpenLayers.Layer.WMS(
+				"Mapa Colegio",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'proyecto-gis:establecimiento_educativo_04_2015',
+					transparent: true
+				}
+				);
+			map.addLayer(layerColegio);
+			layerColegio.setVisibility(false);
+			//hasta aqui
+
 
 			// Layer WMS desde geoserver Local
-			var layerEolico = new OpenLayers.Layer.WMS(
+			/*var layerEolico = new OpenLayers.Layer.WMS(
 				"Mapa Eólico",
 				host + ":8080/geoserver/wms",
 				{
@@ -106,6 +119,7 @@
 			);
 			map.addLayer(layerEolico);
 			layerEolico.setVisibility(false);
+			*/
 
 			// Layer WMS mapa Eolico desde PostGIS
 			var layerEolicoPG = new OpenLayers.Layer.WMS(
