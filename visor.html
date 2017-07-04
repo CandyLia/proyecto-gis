@@ -106,6 +106,16 @@
 			map.addLayer(layerColegio);
 			layerColegio.setVisibility(false);
 			//hasta aqui
+			var layerMunicipio = new OpenLayers.Layer.WMS(
+				"Mapa Municipios",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'proyecto-gis:municipal',
+					transparent: true
+				}
+				);
+			map.addLayer(layerMunicipio);
+			layerMunicipio.setVisibility(false);
 
 
 			// Layer WMS desde geoserver Local
@@ -122,7 +132,7 @@
 			*/
 
 			// Layer WMS mapa Eolico desde PostGIS
-			var layerEolicoPG = new OpenLayers.Layer.WMS(
+		/*	var layerEolicoPG = new OpenLayers.Layer.WMS(
 				"Mapa Eólico PostGIS",
 				host + ":8080/geoserver/wms",
 				{
@@ -183,7 +193,7 @@
 			map.addControl(controlInfo);
 			controlInfo.activate();
 
-
+*/
 			// Configuración para mostrar la región de Bolivia
 			// Lon: -64.819336, Lat: -17.379999
 			var LonLat = new OpenLayers.LonLat(-64.819336, -17.379999);
