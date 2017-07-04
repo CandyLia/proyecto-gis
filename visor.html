@@ -94,7 +94,8 @@
 			var layerDepartamentosWMS = new OpenLayers.Layer.WMS(nombreWMS, urlWMS, propiedadesWMS);
 			layerDepartamentosWMS.setVisibility(false);
 			map.addLayer(layerDepartamentosWMS);
-			
+
+
 			var layerColegio = new OpenLayers.Layer.WMS(
 				"Mapa Colegio",
 				host + ":8080/geoserver/wms",
@@ -105,17 +106,19 @@
 				);
 			map.addLayer(layerColegio);
 			layerColegio.setVisibility(false);
-			
-			var layerMunicipio = new OpenLayers.Layer.WMS(
-				"Mapa Municipios",
-				host + ":8080/geoserver/wms",
-				{
-					layers: 'proyecto-gis:municipal',
-					transparent: true
-				}
-				);
-			map.addLayer(layerMunicipio);
-			layerMunicipio.setVisibility(false);
+
+
+			var nombreWMS = "Mapa Municipios";
+			var urlWMS = "http://geo.gob.bo/geoserver/wms";
+			var propiedadesWMS = {
+				layers: 'fondos:municipal',
+				transparent: true
+			};
+
+			var layerMunicipioWMS = new OpenLayers.Layer.WMS(nombreWMS, urlWMS, propiedadesWMS);
+			layerMunicipioWMS.setVisibility(false);
+			map.addLayer(layerMunicipioWMS);
+
 
 			var layerProvincias = new OpenLayers.Layer.WMS(
 				"Mapa Provincias",
