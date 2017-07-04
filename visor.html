@@ -119,30 +119,27 @@
 			layerMunicipioWMS.setVisibility(false);
 			map.addLayer(layerMunicipioWMS);
 
+			var nombreWMS = "Mapa Provincias";
+			var urlWMS = "http://geo.gob.bo/geoserver/wms";
+			var propiedadesWMS = {
+				layers: 'fondos:provincias',
+				transparent: true
+			};
 
-			var layerProvincias = new OpenLayers.Layer.WMS(
-				"Mapa Provincias",
-				host + ":8080/geoserver/wms",
-				{
-					layers: 'proyecto-gis:provincias',
-					transparent: true
-				}
-				);
-			map.addLayer(layerProvincias);
-			layerProvincias.setVisibility(false);
+			var layerProvinciaWMS = new OpenLayers.Layer.WMS(nombreWMS, urlWMS, propiedadesWMS);
+			layerProvinciaWMS.setVisibility(false);
+			map.addLayer(layerProvinciaWMS);
 
-			var layerCantones = new OpenLayers.Layer.WMS(
-				"Mapa Cantones",
-				host + ":8080/geoserver/wms",
-				{
-					layers: 'proyecto-gis:cantones_geo',
-					transparent: true
-				}
-				);
-			map.addLayer(layerCantones);
-			layerCantones.setVisibility(false);
+			var nombreWMS = "Mapa Cantones";
+			var urlWMS = "http://geo.gob.bo/geoserver/wms";
+			var propiedadesWMS = {
+				layers: 'fondos:cantones_geo',
+				transparent: true
+			};
 
-
+			var layerCantonWMS = new OpenLayers.Layer.WMS(nombreWMS, urlWMS, propiedadesWMS);
+			layerCantonWMS.setVisibility(false);
+			map.addLayer(layerCantonWMS);
 			
 			
 			var LonLat = new OpenLayers.LonLat(-64.819336, -17.379999);
