@@ -51,7 +51,7 @@
 			var host = "http://192.168.43.33";
 			OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
 
-			// Propiedades del objeto Map
+			
 			var propiedades = {
 				projection: proyeccion,
 				displayProjection: proyeccion2,
@@ -60,14 +60,14 @@
 				numZoomLevels: 21
 			};
 
-			//Creación de una instancia de la clase Map
+			
 			var map = new OpenLayers.Map("mapa", propiedades);	
 
-			// Capa OSM
+			
 			var layerOSM = new OpenLayers.Layer.OSM();
 			map.addLayer(layerOSM);
 
-			// Capa Google
+			
 			var layerGoogleSatelital = new OpenLayers.Layer.Google("Google Satelital",{type:google.maps.MapTypeId.SATELLITE});
 			var layerGoogleHibrido = new OpenLayers.Layer.Google("Google Hidrido",{type:google.maps.MapTypeId.HYBRID});
 			var layerGoogleTerrain = new OpenLayers.Layer.Google("Google Terrain",{type:google.maps.MapTypeId.TERRAIN});
@@ -75,15 +75,15 @@
 			map.addLayers([layerGoogleHibrido, layerGoogleSatelital, layerGoogleTerrain]);
 			
 
-			// Control de cambio de Capas
+			
 			var controlCapas = new OpenLayers.Control.LayerSwitcher();
 			map.addControl(controlCapas);
 
-			// Control de cursor
+			
 			var controlCursor = new OpenLayers.Control.MousePosition();
 			map.addControl(controlCursor);
 
-			/// Capa consumiendo servicio WMS
+			
 			var nombreWMS = "Límites departamentales";
 			var urlWMS = "http://geo.gob.bo/geoserver/wms";
 			var propiedadesWMS = {
@@ -94,7 +94,7 @@
 			var layerDepartamentosWMS = new OpenLayers.Layer.WMS(nombreWMS, urlWMS, propiedadesWMS);
 			layerDepartamentosWMS.setVisibility(false);
 			map.addLayer(layerDepartamentosWMS);
-			//esto es mio
+			
 			var layerColegio = new OpenLayers.Layer.WMS(
 				"Mapa Colegio",
 				host + ":8080/geoserver/wms",
@@ -105,7 +105,7 @@
 				);
 			map.addLayer(layerColegio);
 			layerColegio.setVisibility(false);
-			//hasta aqui
+			
 			var layerMunicipio = new OpenLayers.Layer.WMS(
 				"Mapa Municipios",
 				host + ":8080/geoserver/wms",
@@ -124,7 +124,7 @@
 			var zoom = 5;
 			var LonLatTransformado = LonLat.transform(
 				new OpenLayers.Projection("EPSG:4326"),
-				map.getProjection() // new OpenLayers.Projection("EPSG:900913")
+				map.getProjection() 
 			);
 			map.setCenter(LonLatTransformado, zoom);
 
@@ -143,11 +143,7 @@
 
 	<div id="informacion"></div>
 
-	<hr>
-	<form action="upload.php" method="post" enctype="multipart/form-data">
-    Seleccione los archivos a subir:
-    <input type="file" name="myFile[]" multiple id="myFile">
-    <input type="submit" value="Upload File" name="submit">
+	
 
 </body>
 </html>
