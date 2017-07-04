@@ -117,6 +117,28 @@
 			map.addLayer(layerMunicipio);
 			layerMunicipio.setVisibility(false);
 
+			var layerProvincias = new OpenLayers.Layer.WMS(
+				"Mapa Provincias",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'proyecto-gis:provincias',
+					transparent: true
+				}
+				);
+			map.addLayer(layerProvincias);
+			layerProvincias.setVisibility(false);
+
+			var layerCantones = new OpenLayers.Layer.WMS(
+				"Mapa Cantones",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'proyecto-gis:cantones_geo',
+					transparent: true
+				}
+				);
+			map.addLayer(layerCantones);
+			layerCantones.setVisibility(false);
+
 
 			
 			
